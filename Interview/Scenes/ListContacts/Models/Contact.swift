@@ -1,19 +1,10 @@
-import Foundation
 
-class Contact: Decodable {
-    var id: Int
-    var name: String = ""
-    var photoURL = ""
-    
-    init(id: Int, name: String, photoURL: String) {
-        self.id = id
-        self.name = name
-        self.photoURL = photoURL
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case name = "name"
-        case photoURL = "photoURL"
-        case id = "id"
+struct Contact: Decodable, Equatable {
+    let id: Int
+    let name: String
+    let photoURL: String
+
+    static func == (lhs: Contact, rhs: Contact) -> Bool {
+        lhs.id == rhs.id
     }
 }
